@@ -17,11 +17,14 @@ namespace WebApi_Robotica.Controllers
     {
         private readonly IQuestionarioRepository _questionarioRepository;
         private readonly IEstudanteRepository _estudanteRepository;
+        private readonly IProfessorRepository _professorRepository;
 
-        public QuestionariosController(IQuestionarioRepository contexto, IEstudanteRepository ctx)
+
+        public QuestionariosController(IQuestionarioRepository contexto, IEstudanteRepository ctx, IProfessorRepository context)
         {
             _questionarioRepository = contexto;
             _estudanteRepository = ctx;
+            _professorRepository = context;
         }
 
         [HttpGet]
@@ -33,6 +36,21 @@ namespace WebApi_Robotica.Controllers
                 Estudante e  = _estudanteRepository.BuscarPorIdUser(idUsuario);
 
                 return Ok(_questionarioRepository.Listar(e.IdSerie));
+
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, ex.InnerException.Message);
+            }
+        }
+
+        [HttpGet("todos")]
+        public IActionResult ListarTodos()
+        {
+            try
+            {
+                return Ok(_questionarioRepository.ListarTodos());
 
             }
             catch (Exception ex)

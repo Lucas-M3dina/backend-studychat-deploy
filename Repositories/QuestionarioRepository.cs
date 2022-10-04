@@ -68,5 +68,10 @@ namespace WebApi_Robotica.Repositories
         {
             return ctx.Questionarios.Include(C => C.IdSerieNavigation).Where(c => c.IdSerie == idSerie).ToList();
         }
+        
+        public List<Questionario> ListarTodos()
+        {
+            return ctx.Questionarios.ToList();
+        }
     }
 }

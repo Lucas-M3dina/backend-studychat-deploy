@@ -21,5 +21,7 @@ namespace WebApi_Robotica.Interfaces
         /// <param name="id">ID do usuário do tipo Professor que será buscado</param>
         /// <returns>Um usuário Professor buscado</returns>
         Professor BuscarPorId(int id);
+
+        public Professor BuscarPorIdUser(int id);
     }
 }

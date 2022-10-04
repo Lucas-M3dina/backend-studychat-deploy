@@ -22,6 +22,10 @@ namespace WebApi_Robotica.Repositories
         {
             return ctx.Professors.FirstOrDefault(p => p.IdProfessor == id);
         }
+        public Professor BuscarPorIdUser(int id)
+        {
+            return ctx.Professors.FirstOrDefault(p => p.IdUsuarioNavigation.IdUsuario == id);
+        }
 
         public void Cadastrar(Professor user)
         {
